@@ -67,12 +67,6 @@ print(spms_patient_class.compute_frechet_distance(patient_traj_list_[0],
                                                   oversampling=5))
 
 
-"""for patient_traj in patient_traj_list_:
-    num_data = np.shape(patient_traj)[0]
-    ra = np.linspace(start=0, stop=1, num=num_data)
-    plt.plot(ra, patient_traj[:, 0], alpha=0.2)
-plt.show()"""
-
 big_mat = np.array([]).reshape((-1, np.shape(patient_traj_list_[0])[1]))
 traj_ind_in_bm = np.array([])
 for patient_ind in range(len(patient_traj_list_)):
@@ -92,57 +86,8 @@ print('this should be zero ', np.size(big_mat[big_mat != big_mat]))
 
 print('data loading & preprocessing done')
 
-
-# run baseline clustering algorithms
-"""# direct dtw
-print('\nDirect DTW + MHT distance metric')
-dist_mat = spms_patient_class.construct_traj_dist_mat(patient_traj_list_, method='dtw', order=1, oversampling=5)
-ordered_dist_mat, res_order, res_linkage = serialization.compute_serial_matrix(dist_mat, 'ward')
-
-plt.pcolormesh(ordered_dist_mat)
-plt.xlim([0, 120])
-plt.ylim([0, 120])
-plt.colorbar()
-plt.show()"""
-
-
 # pca big mat -> dtw
 print("\nPCA of big mat + frechet")
-
-
-"""dist_mat = spms_patient_class.construct_traj_dist_mat(patient_traj_list_pc, method='frechet', order=1, oversampling=5)
-ordered_dist_mat, res_order, res_linkage = serialization.compute_serial_matrix(dist_mat, 'ward')
-
-
-plt.pcolormesh(ordered_dist_mat)
-plt.xlim([0, 120])
-plt.ylim([0, 120])
-plt.colorbar()
-plt.show()"""
-
-
-"""# pca big mat -> dtw
-print("\nPCA of big mat + frechet")
-pca = PCA(n_components=2)
-pca.fit(big_mat)
-pc_comp = pca.components_
-print(np.shape(big_mat))
-print(np.shape(pca.components_))
-print(pca.explained_variance_ratio_)
-
-patient_traj_list_pc = []
-for i in range(len(patient_traj_list_)):
-    patient_traj_pc = patient_traj_list_[i].dot(pc_comp.T)
-    patient_traj_list_pc.append(patient_traj_pc)
-
-dist_mat = spms_patient_class.construct_traj_dist_mat(patient_traj_list_pc, method='frechet', order=2, oversampling=5)
-ordered_dist_mat, res_order, res_linkage = serialization.compute_serial_matrix(dist_mat, 'ward')
-
-plt.pcolormesh(ordered_dist_mat)
-plt.xlim([0, 120])
-plt.ylim([0, 120])
-plt.colorbar()
-plt.show()"""
 
 
 # pca big mat -> dtw
