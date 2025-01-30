@@ -69,12 +69,6 @@ print(spms_patient_class.compute_frechet_distance(patient_traj_list_[0],
                                                   oversampling=5))
 
 
-"""for patient_traj in patient_traj_list_:
-    num_data = np.shape(patient_traj)[0]
-    ra = np.linspace(start=0, stop=1, num=num_data)
-    plt.plot(ra, patient_traj[:, 0], alpha=0.2)
-plt.show()"""
-
 big_mat = np.array([]).reshape((-1, np.shape(patient_traj_list_[0])[1]))
 traj_ind_in_bm = np.array([])
 for patient_ind in range(len(patient_traj_list_)):
@@ -96,26 +90,7 @@ print('data loading & preprocessing done')
 
 # transformation into ranking metrics
 sign_array = np.ones(np.shape(patient_traj_list_[0])[1])
-# sign_array[5] = -1
-# sign_array[20] = -1
-# m1
-"""param_ind_group_list = [[18, 36],
-                        [0, 16, 21, 24, 29],
-                        [1, 4, 7, 8, 13, 22, 31, 33],
-                        [9, 11, 12, 17, 19, 25, 32]]"""
-# m2
-"""param_ind_group_list = [[1, 18, 23, 36, 37, 38],
-                        [0,  3, 15, 16, 21, 24, 29, 34, 35],
-                        [7,  9, 10, 11, 14, 19, 26, 27, 31, 33],
-                        [4,  6,  8, 12, 13, 17, 20, 22, 25, 32],
-                        [5, 28, 30]]"""
-# m3
-"""param_ind_group_list = [[0, 1, 15, 18, 29],
-                        [4, 6, 10, 23, 25, 28, 37],
-                        [5, 8, 9, 16, 19],
-                        [11, 12, 20, 22, 26, 27, 30, 34],
-                        [3, 21, 31, 38]]"""
-# m4 +-
+
 param_ind_group_list = [[18, 30, 43],
                         [0, 28, 44],
                         [5, 7, 8, 9, 31, 40],
