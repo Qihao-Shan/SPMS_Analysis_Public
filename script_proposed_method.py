@@ -69,12 +69,6 @@ print(spms_patient_class.compute_frechet_distance(patient_traj_list_[0],
                                                   oversampling=5))
 
 
-"""for patient_traj in patient_traj_list_:
-    num_data = np.shape(patient_traj)[0]
-    ra = np.linspace(start=0, stop=1, num=num_data)
-    plt.plot(ra, patient_traj[:, 0], alpha=0.2)
-plt.show()"""
-
 big_mat = np.array([]).reshape((-1, np.shape(patient_traj_list_[0])[1]))
 traj_ind_in_bm = np.array([])
 for patient_ind in range(len(patient_traj_list_)):
@@ -142,37 +136,6 @@ while np.sum(features_under_consideration) > 1:
     i += 1
 
 
-"""# trajectory dependent dr
-param_sets_selected = []
-sign_array = np.ones(np.shape(patient_traj_list_[0])[1])
-sign_array[18] = -1
-ra = np.arange(np.size(sign_array))
-features_under_consideration = np.ones(np.shape(patient_traj_list_[0])[1])
-i = 0
-while np.sum(features_under_consideration) > 1:
-    print("Remaining ", ra[features_under_consideration == 1])
-    features_already_chosen = np.zeros(np.shape(patient_traj_list_[0])[1])
-    num_fronts_old = float('nan')
-    stop_cond = False
-    while not stop_cond:
-        ob_array = spms_patient_class.parameter_selection_objective_fn_2_traj_considering(big_mat=big_mat,
-                                                                                          is_traj_member_mat=is_traj_member_mat,
-                                                                                          feature_sign_array=sign_array,
-                                                                                          features_under_consideration=features_under_consideration,
-                                                                                          features_chosen=features_already_chosen)
-        ra_under_consideration_n_not_chosen = ra[np.logical_and(features_under_consideration == 1, features_already_chosen == 0)]
-        if num_fronts_old == np.nanmin(np.array([num_fronts_old, np.min(ob_array)])):
-            stop_cond = True
-        else:
-            num_fronts_old = np.min(ob_array)
-            chosen_metric_this_round = ra_under_consideration_n_not_chosen[np.argmin(ob_array)]
-            print('Chosen Param ', chosen_metric_this_round, num_fronts_old)
-            features_already_chosen[chosen_metric_this_round] = 1
-    features_under_consideration[features_already_chosen == 1] = 0
-    print("Round ", i, " params chosen: ", ra[features_already_chosen == 1], num_fronts_old)
-    param_sets_selected.append(features_already_chosen)
-    i += 1
-"""
 
 
 
