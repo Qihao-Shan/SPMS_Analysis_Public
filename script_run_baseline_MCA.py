@@ -50,13 +50,6 @@ print("values parsed: ", values_parsed)
 patient_traj_list, patient_treatment_list = spms_patient_class.parse_raw_values_patient_list(patient_list, values_parsed)
 print(patient_traj_list[1][:5, :])
 
-
-"""for i in range(len(patient_traj_list)):
-    print('Patient ID: ', patient_list[i].patient_id)
-    print(len(patient_list[i].mri_image_list))
-    print(np.shape(patient_traj_list[i]))
-"""
-
 patient_traj_list_, patient_list_, data_quality_array = spms_patient_class.normalize_data(patient_traj_list, patient_list, individual_traj=False)
 
 print(np.shape(patient_traj_list_[0]))
@@ -68,12 +61,6 @@ print(spms_patient_class.compute_frechet_distance(patient_traj_list_[0],
                                                   patient_traj_list_[1],
                                                   oversampling=5))
 
-
-"""for patient_traj in patient_traj_list_:
-    num_data = np.shape(patient_traj)[0]
-    ra = np.linspace(start=0, stop=1, num=num_data)
-    plt.plot(ra, patient_traj[:, 0], alpha=0.2)
-plt.show()"""
 
 big_mat = np.array([]).reshape((-1, np.shape(patient_traj_list_[0])[1]))
 traj_ind_in_bm = np.array([])
